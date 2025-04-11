@@ -1,0 +1,63 @@
+host="ivapp02" code="200" env="prod" timestamp="2024-06-01T09:12:45Z" sourceIP="198.51.100.15" details="User viewed homepage"
+host="ivapp01" code="200" env="prod" timestamp="2024-06-01T09:14:02Z" sourceIP="203.0.113.50" details="User searched for query='running shoes'"
+host="ivapp03" code="200" env="prod" timestamp="2024-06-01T10:30:11Z" sourceIP="192.0.2.10" details="User viewed product page ID=SHOE001"
+host="ivapp02" code="404" env="prod" timestamp="2024-06-01T11:05:33Z" sourceIP="198.51.100.88" details="Product image not found: /images/products/SHOE001_alt3.jpg"
+host="ivapp01" code="200" env="prod" timestamp="2024-06-01T15:22:09Z" sourceIP="203.0.113.50" details="User added item ID=SHOE001 to cart"
+
+host="ivapp03" code="200" env="prod" timestamp="2024-06-02T08:05:18Z" sourceIP="192.0.2.123" details="Successful login for user: customer_jane"
+host="ivapp01" code="200" env="prod" timestamp="2024-06-02T08:07:30Z" sourceIP="192.0.2.123" details="User viewed account dashboard"
+host="ivapp02" code="401" env="prod" timestamp="2024-06-02T13:45:01Z" sourceIP="198.51.100.201" details="Failed login attempt for user: admin_user (invalid password)"
+host="ivapp03" code="200" env="prod" timestamp="2024-06-02T16:00:55Z" sourceIP="203.0.113.99" details="User viewed category page: Electronics"
+
+host="ivapp01" code="200" env="prod" timestamp="2024-06-03T10:11:22Z" sourceIP="192.0.2.40" details="User added item ID=ELEC005 to cart"
+host="ivapp02" code="200" env="prod" timestamp="2024-06-03T10:15:00Z" sourceIP="192.0.2.40" details="User viewed cart page"
+host="ivapp03" code="500" env="prod" timestamp="2024-06-03T10:18:45Z" sourceIP="192.0.2.40" details="Internal Server Error during checkout price calculation for cartID=CART5501"
+
+host="ivapp01" code="200" env="prod" timestamp="2024-06-04T11:30:00Z" sourceIP="203.0.113.11" details="User searched for query='organic coffee beans'"
+host="ivapp02" code="403" env="prod" timestamp="2024-06-04T14:05:12Z" sourceIP="198.51.100.33" details="User 'guest_user' attempted to access /order-history"
+host="ivapp03" code="200" env="prod" timestamp="2024-06-04T18:20:49Z" sourceIP="192.0.2.150" details="User viewed product page ID=COFFEE03"
+
+host="ivapp02" code="200" env="prod" timestamp="2024-06-05T07:55:30Z" sourceIP="198.51.100.77" details="Successful login for user: mike_p"
+host="ivapp01" code="201" env="prod" timestamp="2024-06-05T08:10:59Z" sourceIP="198.51.100.77" details="Order placed successfully: orderID=ORD20240605A"
+host="ivapp03" code="400" env="prod" timestamp="2024-06-05T16:40:15Z" sourceIP="203.0.113.180" details="Invalid input: Search query contained illegal characters '***'"
+
+host="ivapp01" code="200" env="prod" timestamp="2024-06-06T09:02:11Z" sourceIP="192.0.2.88" details="User viewed product page ID=BOOK012"
+host="ivapp02" code="503" env="prod" timestamp="2024-06-06T15:00:30Z" sourceIP="198.51.100.5" details="Service Unavailable: Inventory check service timed out for product ID=BOOK012"
+
+host="ivapp03" code="200" env="prod" timestamp="2024-06-07T12:15:00Z" sourceIP="203.0.113.62" details="User added item ID=TOYCAR01 to cart"
+host="ivapp01" code="429" env="prod" timestamp="2024-06-07T17:30:05Z" sourceIP="192.0.2.200" details="Too Many Requests: Rate limit hit on /api/v1/products endpoint"
+
+host="ivapp02" code="200" env="prod" timestamp="2024-06-08T10:00:01Z" sourceIP="198.51.100.111" details="User viewed category page: Clothing"
+host="ivapp03" code="404" env="prod" timestamp="2024-06-08T14:55:40Z" sourceIP="203.0.113.25" details="Page not found: /promotions/summer-sale-2023"
+
+host="ivapp01" code="200" env="prod" timestamp="2024-06-09T11:11:11Z" sourceIP="192.0.2.75" details="Successful login for user: sarah_b"
+host="ivapp02" code="200" env="prod" timestamp="2024-06-09T11:13:05Z" sourceIP="192.0.2.75" details="User removed item ID=SHOE001 from cart"
+
+host="ivapp03" code="200" env="prod" timestamp="2024-06-10T09:30:50Z" sourceIP="198.51.100.90" details="User searched for query='laptop stand'"
+host="ivapp01" code="401" env="prod" timestamp="2024-06-10T16:00:21Z" sourceIP="203.0.113.144" details="Failed login attempt for user: test@example.com (unknown user)"
+
+# --- Days 11-20 (Mix of similar events) ---
+host="ivapp02" code="200" env="prod" timestamp="2024-06-11T10:05:15Z" sourceIP="192.0.2.11" details="User viewed product page ID=GADGET007"
+host="ivapp03" code="201" env="prod" timestamp="2024-06-12T14:25:30Z" sourceIP="198.51.100.130" details="Order placed successfully: orderID=ORD20240612B"
+host="ivapp01" code="500" env="prod" timestamp="2024-06-13T11:50:00Z" sourceIP="203.0.113.8" details="Database connection error during user session retrieval"
+host="ivapp02" code="200" env="prod" timestamp="2024-06-14T09:15:55Z" sourceIP="192.0.2.99" details="User added item ID=KITCHEN01 to cart"
+host="ivapp03" code="404" env="prod" timestamp="2024-06-15T18:00:10Z" sourceIP="198.51.100.22" details="Static content not found: /css/theme-v2.css"
+host="ivapp01" code="200" env="prod" timestamp="2024-06-16T13:00:00Z" sourceIP="203.0.113.175" details="User viewed cart page"
+host="ivapp02" code="400" env="prod" timestamp="2024-06-17T10:30:40Z" sourceIP="192.0.2.140" details="Bad Request: Invalid discount code format 'FREE!'"
+host="ivapp03" code="200" env="prod" timestamp="2024-06-18T19:10:05Z" sourceIP="198.51.100.65" details="Successful login for user: david_lee"
+host="ivapp01" code="200" env="prod" timestamp="2024-06-19T08:40:18Z" sourceIP="203.0.113.33" details="User searched for query='wireless mouse'"
+host="ivapp02" code="403" env="prod" timestamp="2024-06-20T16:20:00Z" sourceIP="192.0.2.188" details="Access Denied: Attempt to update profile of another user blocked."
+
+# --- Days 21-30 (More mix including potential issues) ---
+host="ivapp03" code="200" env="prod" timestamp="2024-06-21T11:00:45Z" sourceIP="198.51.100.199" details="User viewed product page ID=SPORT003"
+host="ivapp01" code="200" env="prod" timestamp="2024-06-22T12:30:10Z" sourceIP="203.0.113.12" details="User added item ID=SPORT003 to cart"
+host="ivapp02" code="503" env="prod" timestamp="2024-06-23T09:05:00Z" sourceIP="192.0.2.55" details="Service Unavailable: Payment gateway API unreachable"
+host="ivapp03" code="201" env="prod" timestamp="2024-06-23T15:00:55Z" sourceIP="198.51.100.1" details="Order placed successfully: orderID=ORD20240623C" # Note: Order placed after earlier gateway issue resolved
+host="ivapp01" code="404" env="prod" timestamp="2024-06-24T10:10:10Z" sourceIP="203.0.113.70" details="Category page not found: /category/discontinued-items"
+host="ivapp02" code="200" env="prod" timestamp="2024-06-25T14:45:30Z" sourceIP="192.0.2.160" details="User viewed account order history"
+host="ivapp03" code="401" env="prod" timestamp="2024-06-26T08:15:05Z" sourceIP="198.51.100.42" details="Failed login attempt for user: locked_account (account locked)"
+host="ivapp01" code="200" env="prod" timestamp="2024-06-27T11:20:40Z" sourceIP="203.0.113.101" details="User searched for query='4k monitor'"
+host="ivapp02" code="400" env="prod" timestamp="2024-06-28T17:00:15Z" sourceIP="192.0.2.210" details="Bad Request: Missing 'shipping_address' during checkout submission for cartID=CART6802"
+host="ivapp03" code="200" env="prod" timestamp="2024-06-29T13:33:33Z" sourceIP="198.51.100.17" details="User viewed product page ID=HOME009"
+host="ivapp01" code="500" env="prod" timestamp="2024-06-30T19:05:20Z" sourceIP="203.0.113.205" details="Internal Server Error: Unexpected null value encountered in recommendation engine"
+host="ivapp02" code="200" env="prod" timestamp="2024-06-30T20:10:00Z" sourceIP="192.0.2.30" details="User added item ID=HOME009 to cart"

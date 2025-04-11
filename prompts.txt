@@ -1,0 +1,9 @@
+## Generate synthetic data ##
+You are a log generator for a ecommerce application . Create log sample data for 30 days which has both positive and negative scenarios. Generate output in a text file . Log entries should have below fields:
+  - host (should start with ivapp)
+  - code (HTML response codes)
+  - env (prod)
+  - timestamp
+  - source IP
+  -  details
+  - severity ( should display log level)
