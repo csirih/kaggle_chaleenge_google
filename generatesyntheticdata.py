@@ -25,4 +25,4 @@ n=0
 for n in range(10):
     if response.text:
           with open("Output.txt", "w") as text_file:
-             text_file.write(response.parsed)
+             text_file.write(response.text)
