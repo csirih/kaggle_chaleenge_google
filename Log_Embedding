@@ -1,0 +1,55 @@
+import os
+from google import genai
+from google.genai import types
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Set up the API key
+GOOGLE_API_KEY = "AIzaSyDkOGz6xdZdnyHlcLQfqI63hKK_9o5ZoWM"
+client = genai.Client(api_key=GOOGLE_API_KEY)
+
+# List models that support embedding
+for model in client.models.list():
+    if 'embedContent' in model.supported_actions:
+        print(f"Model: {model.name}")
+
+# Define texts (fixed formatting issues)
+texts = [
+    'host="ivapp02" code="200" env="prod" timestamp="2024-06-01T09:12:45Z" sourceIP="198.51.100.15" details="User viewed homepage"',
+    'host="ivapp01" code="200" env="prod" timestamp="2024-06-01T09:14:02Z" sourceIP="203.0.113.50" details="User searched for query=\'running shoes\'"',
+    'host="ivapp03" code="200" env="prod" timestamp="2024-06-02T08:05:18Z" sourceIP="192.0.2.123" details="Successful login for user: customer_jane"',
+    'host="ivapp01" code="200" env="prod" timestamp="2024-06-02T08:07:30Z" sourceIP="192.0.2.123" details="User viewed account dashboard"',
+    'host="ivapp02" code="401" env="prod" timestamp="2024-06-02T13:45:01Z" sourceIP="198.51.100.201" details="Failed login attempt for user: admin_user (invalid password)"',
+    'The quick brown fox jumps over the lazy dog.'  # For similarity reference
+]
+
+# Generate embeddings
+response = client.models.embed_content(
+    model='models/text-embedding-004',
+    contents=texts,
+    config=types.EmbedContentConfig(task_type='semantic_similarity')
+)
+
+# Truncate long strings for display
+def truncate(t: str, limit: int = 50) -> str:
+    return t[:limit-3] + '...' if len(t) > limit else t
+
+truncated_texts = [truncate(t) for t in texts]
+
+# Create DataFrame of embeddings
+df = pd.DataFrame([e.values for e in response.embeddings], index=truncated_texts)
+
+# Compute cosine similarity
+sim = df @ df.T
+
+# Plot similarity heatmap
+plt.figure(figsize=(10, 8))
+sns.heatmap(sim, vmin=0, vmax=1, cmap="Greens", annot=True, fmt=".2f")
+plt.title("Semantic Similarity Heatmap")
+plt.show()
+
+# Show most similar entries to the reference sentence
+reference = truncate('The quick brown fox jumps over the lazy dog.')
+print("\nMost similar texts to the reference sentence:")
+print(sim[reference].sort_values(ascending=False))
