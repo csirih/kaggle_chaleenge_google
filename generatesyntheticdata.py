@@ -1,29 +1,49 @@
 import os
 from google import genai
 from google.genai import types
-from dotenv import load_dotenv
-def generateSyntheticData():
-    BASEDIR = os.path.abspath(os.path.dirname(__file__))
-    load_dotenv(os.path.join(BASEDIR, '.env'))
-    GOOGLE_API_KEY = os.getenv("SECRET_KEY")
-    client = genai.Client(api_key=GOOGLE_API_KEY)
-    high_temp_config = types.GenerateContentConfig(temperature=2.0)
-    prompt='''
-    You are a log generator for a ecommerce application . Create log sample data for 30 days which has both positive and negative scenarios. Generate output in a text file . Log entries should have below fields:
-      - host (should start with ivapp)
-      - code (HTML response codes)
-      - env (prod)
-      - timestamp
-      - source IP
-      -  details
-      - severity ( should display log level)
-    '''
-    response = client.models.generate_content(
-          model='gemini-2.0-flash',
-          config=high_temp_config,
-          contents=prompt)
 
-    for n in range(10):
-        if response.text:
-              with open("Output.txt", "w") as text_file:
-                 text_file.write(response.text)
+# Directly assign API key
+GOOGLE_API_KEY = "AIzaSyDkOGz6xdZdnyHlcLQfqI63hKK_9o5ZoWM"
+client = genai.Client(api_key=GOOGLE_API_KEY)
+
+# Lower temperature to increase likelihood of getting output
+high_temp_config = types.GenerateContentConfig(temperature=1.0)
+
+prompt = '''
+You are a log generator for an e-commerce application. Create realistic log sample data for 30 days, including both positive and negative scenarios. Generate the output in plain text format. Each log entry should include:
+  - host (should start with "ivapp")
+  - code (HTTP response codes)
+  - env (always "prod")
+  - timestamp
+  - source IP
+  - details
+  - severity (log level like INFO, WARN, ERROR)
+'''
+
+with open("logs.txt", "w") as text_file:
+    for i in range(10):
+        print(f"--- Request {i + 1} ---")
+
+        response = client.models.generate_content(
+            model='gemini-1.5-pro',  # more stable than flash
+            config=high_temp_config,
+            contents=[types.Content(parts=[types.Part(text=prompt)])]
+        )
+
+        try:
+            # Check entire response structure
+            print("Response received")
+            print(response)
+
+            # Safely extract text
+            candidate = response.candidates[0]
+            part_text = candidate.content.parts[0].text
+
+            if part_text:
+                print("Writing log data to file")
+                text_file.write(part_text + "\n\n")
+            else:
+                print("No text found in part")
+
+        except Exception as e:
+            print(f"Error while processing response: {e}")
